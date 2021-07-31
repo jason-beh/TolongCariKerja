@@ -16,7 +16,10 @@ export default function Login() {
     return;
   } else if (!loading && !session) {
     return (
+      <div class="flex flex-col">
       <button onClick={() => signIn("google", { callbackUrl: "/" })}>Sign in with Google</button>
+      <button onClick={() => signIn("facebook", { callbackUrl: "/" })}>Sign in with Facebook</button>
+      </div>
     );
   }
 }
