@@ -15,12 +15,14 @@ export default function Login() {
   return (
     <>
       {!session && (
-      <div className="flex flex-col">
-      <button onClick={() => signIn("google", { callbackUrl: "/" })}>Sign in with Google</button>
-      <button onClick={() => signIn("facebook", { callbackUrl: "/" })}>
-        Sign in with Facebook
-      </button>
-    </div>
+        <div className="flex flex-col">
+          <button onClick={() => signIn("google")}>
+            Sign in with Google
+          </button>
+          <button onClick={() => signIn("facebook")}>
+            Sign in with Facebook
+          </button>
+        </div>
       )}
     </>
   );
