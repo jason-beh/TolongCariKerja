@@ -1,22 +1,30 @@
 import { signOut, useSession } from "next-auth/client";
-import Router from "next/router";
+import { useRouter } from "next/router";
+import { useEffect } from "react";
+import Link from "next/link";
 
 export default function Index() {
   const [session, loading] = useSession();
+  const router = useRouter();
 
-  if (loading) {
-    return "loading...";
-  }
+  useEffect(() => {
+    if (!loading && !session) {
+      router.push("/login");
+    }
+  }, [loading, session]);
 
-  if (!loading && !session) {
-    Router.push(process.env.NEXTAUTH_URL + "/login");
-    return;
-  } else if (!loading && session) {
-    return (
-      <>
-        <div>Authenticated View</div>
-        <a onClick={() => signOut({ callbackUrl: process.env.NEXTAUTH_URL + "/login" })}>Sign Out</a>
-      </>
-    );
-  }
+  return (
+    <>
+      {session && (
+        <>
+          Signed in as {session.user.email}
+          <div>You can now access our super secret pages</div>
+          <button className="block">
+            <Link href="/hello">To the secret</Link>
+          </button>
+          <button onClick={signOut}>sign out</button>
+        </>
+      )}
+    </>
+  );
 }
