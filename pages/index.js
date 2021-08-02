@@ -15,7 +15,7 @@ export default function Index() {
 
   return (
     <>
-      {session && (
+      {session && !loading && (
         <>
           Signed in as {session.user.email}
           <div>You can now access our super secret pages</div>
