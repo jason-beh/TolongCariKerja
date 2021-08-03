@@ -52,7 +52,7 @@ export default function editProvideHelp() {
       }
 
       // Redirect if there isn't any provideHelp
-      if (typeof userData.provideHelpId == "undefined" || userData.provideHelpId == "") {
+      if (userData.provideHelpId == null) {
         setDisablePage(true);
       } else {
         fetchData();
@@ -95,7 +95,7 @@ export default function editProvideHelp() {
   if (disablePage === true) {
     return (
       <div className="flex flex-col h-screen items-center justify-center">
-        <p className="text-3xl font-medium mb-5">You haven't submitted a help provide.</p>
+        <p className="text-3xl font-medium mb-5">You haven't submitted a help provision.</p>
         <a
           href="/"
           className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none"

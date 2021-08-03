@@ -14,8 +14,8 @@ export default async function handler(req, res) {
       isRequestHelp: true,
       isCompleted: false,
       creatorUid: session.id,
-      matchedUid: "",
-      completeDate: Date.now(),
+      
+      completeDate: "",
     };
 
     // Update profile with new image

@@ -3,16 +3,16 @@ const { Schema } = mongoose;
 
 const userSchema = new Schema(
   {
-    uid: String,
     email: String,
     name: String,
-    contact: Number,
-    skills: [String],
-    completedJobs: [String],
-    location: String,
-    requestHelpId: String,
-    provideHelpId: String,
-    image: String,
+
+    contact: { type: Number, default: null },
+    skills: { type: [String], default: [] },
+    completedJobs: { type: [String], default: [] },
+    location: { type: String, default: "" },
+    requestHelpId: { type: Schema.Types.ObjectId, ref: "Help", default: null },
+    provideHelpId: { type: Schema.Types.ObjectId, ref: "Help", default: null },
+    image: { type: String, default: "" },
   },
   { timestamps: true }
 );

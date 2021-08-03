@@ -24,7 +24,7 @@ export default function newRequestHelp() {
     if (!loading && session) {
       let userData = session.dbUser;
 
-      if (typeof userData.requestHelpId != "undefined" && userData.requestHelpId != "") {
+      if (userData.requestHelpId != null) {
         setDisablePage(true);
       }
 

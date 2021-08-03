@@ -24,7 +24,7 @@ export default function newProvideHelp() {
     if (!loading && session) {
       let userData = session.dbUser;
 
-      if (typeof userData.provideHelpId != "undefined" && userData.provideHelpId != "") {
+      if (userData.provideHelpId != null) {
         setDisablePage(true);
       }
 
@@ -76,7 +76,7 @@ export default function newProvideHelp() {
     return (
       <div className="flex flex-col h-screen items-center justify-center">
         <p className="text-3xl font-medium mb-5">
-          You only can submit one job help provide at a time.
+          You only can submit one help provision at a time.
         </p>
         <a
           href="/"

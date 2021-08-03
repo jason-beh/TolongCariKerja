@@ -52,7 +52,7 @@ export default function editRequestHelp() {
       }
 
       // Redirect if there isn't any requestHelp
-      if (typeof userData.requestHelpId == "undefined" || userData.requestHelpId == "") {
+      if (userData.requestHelpId == null) {
         setDisablePage(true);
       } else {
         fetchData();

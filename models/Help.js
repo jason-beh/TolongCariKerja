@@ -7,13 +7,12 @@ const helpSchema = new Schema(
     skills: [String],
 
     isRequestHelp: Boolean,
-    isCompleted: String,
-    creatorUid: String,
-    matchedUid: String,
-    completeDate: String,
+    isCompleted: Boolean,
+    creatorUid: { type: Schema.Types.ObjectId, ref: "User" },
+    matchedUid: { type: Schema.Types.ObjectId, ref: "User", default: null },
+    completeDate: { type: String, default: "" },
   },
   { timestamps: true }
 );
 
-export default mongoose.models["Help"] ||
-  mongoose.model("Help", helpSchema, "help");
+export default mongoose.models["Help"] || mongoose.model("Help", helpSchema, "help");
