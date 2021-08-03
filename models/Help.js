@@ -1,12 +1,12 @@
 import mongoose from "mongoose";
 const { Schema } = mongoose;
 
-const requestHelpSchema = new Schema(
+const helpSchema = new Schema(
   {
     message: String,
     skills: [String],
-    location: String,
 
+    isRequestHelp: Boolean,
     isCompleted: String,
     creatorUid: String,
     matchedUid: String,
@@ -15,5 +15,5 @@ const requestHelpSchema = new Schema(
   { timestamps: true }
 );
 
-export default mongoose.models["RequestHelp"] ||
-  mongoose.model("RequestHelp", requestHelpSchema, "requestHelps");
+export default mongoose.models["Help"] ||
+  mongoose.model("Help", helpSchema, "help");
