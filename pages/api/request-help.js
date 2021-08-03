@@ -22,11 +22,32 @@ export default async function handler(req, res) {
     let newHelp = await new Help(data);
     await newHelp.save();
 
-    await User.findOneAndUpdate(
-      { _id: session.id },
-      { requestHelpId: newHelp._id }
-    ).lean();
+    await User.findOneAndUpdate({ _id: session.id }, { requestHelpId: newHelp._id }).lean();
 
+    return res.status(200).send("success");
+  } else if (req.method === "GET") {
+    let { id } = req.query;
+
+    if (typeof id === "undefined" || id === null) {
+      return res.status(404).send("fail");
+    }
+
+    let data = await Help.findOne({ _id: id });
+
+    if (typeof data === "undefined" || data === null) {
+      return res.status(404).send("fail");
+    }
+
+    return res.status(200).send(data);
+  } else if (req.method === "PUT") {
+    await Help.findOneAndUpdate({ _id: session.dbUser.requestHelpId }, req.body).lean();
+
+    return res.status(200).send("success");
+  } else if (req.method === "DELETE") {
+    await Help.findOneAndDelete({ _id: session.dbUser.requestHelpId }, req.body).lean();
+
+    await User.findOneAndUpdate({ _id: session.id }, { requestHelpId: "" }).lean();
+    
     return res.status(200).send("success");
   } else {
     return res.status(404).send("Error");

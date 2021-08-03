@@ -6,7 +6,7 @@ import * as Yup from "yup";
 import CreatableSelect from "react-select/creatable";
 import axios from "axios";
 
-export default function Example() {
+export default function newRequestHelp() {
   const [session, loading] = useSession();
   const router = useRouter();
   const [creatableSkills, setCreatableSkills] = useState(null);
