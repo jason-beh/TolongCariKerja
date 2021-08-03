@@ -11,7 +11,7 @@ const userSchema = new Schema(
     completedJobs: [String],
     location: String,
     requestHelpId: String,
-    provideHelpId: [String],
+    provideHelpId: String,
     image: String,
   },
   { timestamps: true }
