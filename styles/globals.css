@@ -1,3 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* :root {
+	--PhoneInput-color--focus: unset !important;
+} */
