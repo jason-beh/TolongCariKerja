@@ -6,8 +6,6 @@ import { HeartIcon as HeartOutlineIcon } from "@heroicons/react/outline";
 import axios from "axios";
 
 export default function PostCard({ help, savedHelp }) {
-  console.log(savedHelp);
-  console.log(savedHelp.includes(help._id));
   const [isSaved, setIsSaved] = useState(savedHelp.includes(help._id));
 
   async function savePost(id, isSaved) {
@@ -82,8 +80,8 @@ export default function PostCard({ help, savedHelp }) {
           <div className="-ml-px w-0 flex-1 flex">
             <div
               onClick={() => {
-                savePost(help._id, !isSaved);
                 setIsSaved(!isSaved);
+                savePost(help._id, !isSaved);
               }}
               className={`relative w-0 flex-1 inline-flex items-center justify-center py-4 text-sm font-medium border border-transparent rounded-br-lg ${
                 isSaved ? "text-red-500" : "text-gray-700"
