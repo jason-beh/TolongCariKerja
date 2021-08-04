@@ -5,16 +5,19 @@ import { useEffect, useState } from "react";
 import * as Yup from "yup";
 import CreatableSelect from "react-select/creatable";
 import axios from "axios";
+import Record from "../../components/Record";
 
 export default function editProvideHelp() {
   const [session, loading] = useSession();
   const router = useRouter();
   const [creatableSkills, setCreatableSkills] = useState(null);
-  const [provideData, setProvideData] = useState({
+  const [helpData, setHelpData] = useState({
     message: "",
     skills: "",
   });
   const [disablePage, setDisablePage] = useState(false);
+  const [displayText, setDisplayText] = useState("");
+  const [translatedText, setTranslatedText] = useState("");
 
   useEffect(() => {
     if (!loading && !session) {
@@ -33,8 +36,8 @@ export default function editProvideHelp() {
 
         let initialProfile = {};
 
-        for (var key in provideData) {
-          if (provideData.hasOwnProperty(key)) {
+        for (var key in helpData) {
+          if (helpData.hasOwnProperty(key)) {
             initialProfile[key] = fetchedProvideData[key] || "";
           }
         }
@@ -48,7 +51,7 @@ export default function editProvideHelp() {
         });
         setCreatableSkills(skills);
 
-        setProvideData(initialProfile);
+        setHelpData(initialProfile);
       }
 
       // Redirect if there isn't any provideHelp
@@ -62,8 +65,8 @@ export default function editProvideHelp() {
 
   const formik = useFormik({
     initialValues: {
-      message: provideData.message,
-      skills: provideData.skills,
+      message: helpData.message,
+      skills: helpData.skills,
     },
     enableReinitialize: true,
     validationSchema: Yup.object({
@@ -129,6 +132,34 @@ export default function editProvideHelp() {
                       className="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"
                     >
                       Description of the job you are looking for
+                      <Record
+                        setTranslatedText={setTranslatedText}
+                        setDisplayText={setDisplayText}
+                        setHelpData={setHelpData}
+                        helpData={helpData}
+                      />
+                      {displayText != "" ? (
+                        <>
+                          <label
+                            htmlFor="skills"
+                            className="block mb-1 text-xs font-medium text-gray-700 sm:mt-px sm:pt-2"
+                          >
+                            Spoken words in text:
+                          </label>
+                          <p className="text-sm mb-1">{displayText}</p>
+                        </>
+                      ) : null}
+                      {translatedText != "" ? (
+                        <>
+                          <label
+                            htmlFor="skills"
+                            className="block mb-1 text-xs font-medium text-gray-700 sm:mt-px sm:pt-2"
+                          >
+                            Translated text:
+                          </label>
+                          <p className="text-sm mb-1">{translatedText}</p>
+                        </>
+                      ) : null}
                     </label>
                     <div className="mt-1 sm:mt-0 sm:col-span-2">
                       <textarea
