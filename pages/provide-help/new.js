@@ -6,6 +6,7 @@ import * as Yup from "yup";
 import CreatableSelect from "react-select/creatable";
 import axios from "axios";
 import Record from "../../components/Record";
+import { ArrowLeftIcon } from "@heroicons/react/solid";
 
 export default function newProvideHelp() {
   const [session, loading] = useSession();
@@ -27,7 +28,7 @@ export default function newProvideHelp() {
     if (!loading && session) {
       let userData = session.dbUser;
 
-      if (userData.provideHelpId != null) {
+      if (userData.provideHelp != null) {
         setDisablePage(true);
       }
 
@@ -95,6 +96,13 @@ export default function newProvideHelp() {
     <>
       {session && (
         <main className="max-w-4xl mx-auto pt-24 pb-12 px-4 lg:pb-16">
+          <div
+            className="flex items-center justify-start mb-10 cursor-pointer"
+            onClick={() => window.history.back()}
+          >
+            <ArrowLeftIcon className="w-6 h-6 mr-2" />
+            <span className="text-lg">Back</span>
+          </div>
           <form className="space-y-8 divide-y divide-gray-200" onSubmit={formik.handleSubmit}>
             <div className="space-y-8 divide-y divide-gray-200 sm:space-y-5">
               <div>
@@ -114,7 +122,6 @@ export default function newProvideHelp() {
                       className="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"
                     >
                       Description of the job you are looking for
-
                       <Record
                         setTranslatedText={setTranslatedText}
                         setDisplayText={setDisplayText}
@@ -143,8 +150,6 @@ export default function newProvideHelp() {
                           <p className="text-sm mb-1">{translatedText}</p>
                         </>
                       ) : null}
-
-
                     </label>
                     <div className="mt-1 sm:mt-0 sm:col-span-2">
                       <textarea

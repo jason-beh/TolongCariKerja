@@ -6,6 +6,7 @@ import * as Yup from "yup";
 import CreatableSelect from "react-select/creatable";
 import axios from "axios";
 import Record from "../../components/Record";
+import { ArrowLeftIcon } from "@heroicons/react/solid";
 
 export default function editRequestHelp() {
   const [session, loading] = useSession();
@@ -31,7 +32,7 @@ export default function editRequestHelp() {
       async function fetchData() {
         let { data: fetchedRequestData } = await axios({
           method: "get",
-          url: `/api/request-help?id=${userData.requestHelpId}`,
+          url: `/api/request-help?id=${userData.requestHelp}`,
         });
 
         let initialProfile = {};
@@ -55,7 +56,7 @@ export default function editRequestHelp() {
       }
 
       // Redirect if there isn't any requestHelp
-      if (userData.requestHelpId == null) {
+      if (userData.requestHelp == null) {
         setDisablePage(true);
       } else {
         fetchData();
@@ -113,6 +114,13 @@ export default function editRequestHelp() {
     <>
       {session && (
         <main className="max-w-4xl mx-auto pt-24 pb-12 px-4 lg:pb-16">
+          <div
+            className="flex items-center justify-start mb-10 cursor-pointer"
+            onClick={() => window.history.back()}
+          >
+            <ArrowLeftIcon className="w-6 h-6 mr-2" />
+            <span className="text-lg">Back</span>
+          </div>
           <form className="space-y-8 divide-y divide-gray-200" onSubmit={formik.handleSubmit}>
             <div className="space-y-8 divide-y divide-gray-200 sm:space-y-5">
               <div>

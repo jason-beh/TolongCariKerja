@@ -22,7 +22,7 @@ export default async function handler(req, res) {
         "message" : "test",
         "isRequestHelp" : false,
         "isCompleted" : "false",
-        "creatorUid" : "6108bf3f7def071e5fecc1a2",
+        "creator" : "6108bf3f7def071e5fecc1a2",
         "matchedUid" : "",
         "completeDate" : "",
       });

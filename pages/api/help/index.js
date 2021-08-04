@@ -13,7 +13,7 @@ export default async function handler(req, res) {
     let helpData = await Help.find({
       isCompleted: false,
     })
-      .populate("creatorUid")
+      .populate("creator")
       .lean();
 
     console.log(helpData);

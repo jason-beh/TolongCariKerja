@@ -10,8 +10,9 @@ const userSchema = new Schema(
     skills: { type: [String], default: [] },
     completedJobs: { type: [String], default: [] },
     location: { type: String, default: "" },
-    requestHelpId: { type: Schema.Types.ObjectId, ref: "Help", default: null },
-    provideHelpId: { type: Schema.Types.ObjectId, ref: "Help", default: null },
+    requestHelp: { type: Schema.Types.ObjectId, ref: "Help", default: null },
+    provideHelp: { type: Schema.Types.ObjectId, ref: "Help", default: null },
+    savedHelp: { type: [Schema.Types.ObjectId], ref: "Help", default: [] },
     image: { type: String, default: "" },
   },
   { timestamps: true }

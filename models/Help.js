@@ -8,8 +8,8 @@ const helpSchema = new Schema(
 
     isRequestHelp: Boolean,
     isCompleted: Boolean,
-    creatorUid: { type: Schema.Types.ObjectId, ref: "User" },
-    matchedUid: { type: Schema.Types.ObjectId, ref: "User", default: null },
+    creator: { type: Schema.Types.ObjectId, ref: "User" },
+    matched: { type: Schema.Types.ObjectId, ref: "User", default: null },
     completeDate: { type: String, default: "" },
   },
   { timestamps: true }

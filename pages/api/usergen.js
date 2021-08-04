@@ -22,8 +22,8 @@ export default async function handler(req, res) {
         skills: ["firebase"],
         completedJobs: [],
         location: "Selangor",
-        requestHelpId: "",
-        provideHelpId: "",
+        requestHelp: "",
+        provideHelp: "",
         image: "test image here",
       });
       await newUser.save();

@@ -13,7 +13,7 @@ export default async function handler(req, res) {
       ...req.body,
       isRequestHelp: false,
       isCompleted: false,
-      creatorUid: session.id,
+      creator: session.id,
       
       completeDate: "",
     };
@@ -22,7 +22,7 @@ export default async function handler(req, res) {
     let newHelp = await new Help(data);
     await newHelp.save();
 
-    await User.findOneAndUpdate({ _id: session.id }, { provideHelpId: newHelp._id }).lean();
+    await User.findOneAndUpdate({ _id: session.id }, { provideHelp: newHelp._id }).lean();
 
     return res.status(200).send("success");
   } else if (req.method === "GET") {
@@ -40,13 +40,13 @@ export default async function handler(req, res) {
 
     return res.status(200).send(data);
   } else if (req.method === "PUT") {
-    await Help.findOneAndUpdate({ _id: session.dbUser.provideHelpId }, req.body).lean();
+    await Help.findOneAndUpdate({ _id: session.dbUser.provideHelp }, req.body).lean();
 
     return res.status(200).send("success");
   } else if (req.method === "DELETE") {
-    await Help.findOneAndDelete({ _id: session.dbUser.provideHelpId }, req.body).lean();
+    await Help.findOneAndDelete({ _id: session.dbUser.provideHelp }, req.body).lean();
 
-    await User.findOneAndUpdate({ _id: session.id }, { provideHelpId: null }).lean();
+    await User.findOneAndUpdate({ _id: session.id }, { provideHelp: null }).lean();
     
     return res.status(200).send("success");
   } else {
