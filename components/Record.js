@@ -83,7 +83,7 @@ export default function mic({ setDisplayText, setTranslatedText, setHelpData, he
   }
 
   return (
-    <div className="mt-10">
+    <div className="mt-4 mb-3 sm:mt-10 sm:mb-0">
       <label
         htmlFor="skills"
         className="block mb-1 text-xs font-medium text-gray-700 sm:mt-px sm:pt-2"

@@ -17,11 +17,11 @@ const navigation = [
   },
   {
     link: "/request-help/new",
-    title: "Request Help",
+    title: "Request New Help",
   },
   {
     link: "/provide-help/new",
-    title: "Provide Help",
+    title: "Provide New Help",
   },
 ];
 
@@ -45,7 +45,7 @@ export default function Layout({ children, pageTitle = "" }) {
 
   return (
     <div>
-      <Disclosure as="nav" className="bg-sky-600">
+      <Disclosure as="nav" className="bg-sky-700">
         {({ open }) => (
           <>
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -60,13 +60,13 @@ export default function Layout({ children, pageTitle = "" }) {
                     <div className="ml-10 flex items-baseline space-x-4">
                       <a
                         href="/"
-                        className="text-white hover:bg-sky-500 hover:bg-opacity-75 px-3 py-2 rounded-md text-sm font-medium"
+                        className="text-white hover:bg-sky-600 hover:bg-opacity-75 px-3 py-2 rounded-md text-sm font-medium"
                       >
                         Home
                       </a>
                       <a
                         href="/about"
-                        className="text-white hover:bg-sky-500 hover:bg-opacity-75 px-3 py-2 rounded-md text-sm font-medium"
+                        className="text-white hover:bg-sky-600 hover:bg-opacity-75 px-3 py-2 rounded-md text-sm font-medium"
                       >
                         About
                       </a>
@@ -79,7 +79,7 @@ export default function Layout({ children, pageTitle = "" }) {
                       {({ open }) => (
                         <>
                           <div>
-                            <Menu.Button className="relative inline-flex items-center px-4 py-2 img border-transparent text-sm font-medium rounded-md text-white bg-gray-600 shadow-sm hover:bg-gray-700 focus:outline-none">
+                            <Menu.Button className="relative inline-flex items-center px-4 py-2 img border-transparent text-sm font-medium rounded-md text-white bg-gray-700 shadow-sm hover:bg-gray-800 focus:outline-none">
                               <span>Create New </span>
                               <PlusIcon className="ml-2 -mr-1 h-5 w-5" aria-hidden="true" />
                             </Menu.Button>
@@ -107,7 +107,7 @@ export default function Layout({ children, pageTitle = "" }) {
                                       "block px-4 py-2 text-sm text-gray-700"
                                     )}
                                   >
-                                    Request Help
+                                    Request New Help
                                   </a>
                                 )}
                               </Menu.Item>
@@ -120,7 +120,7 @@ export default function Layout({ children, pageTitle = "" }) {
                                       "block px-4 py-2 text-sm text-gray-700"
                                     )}
                                   >
-                                    Provide Help
+                                    Provide New Help
                                   </a>
                                 )}
                               </Menu.Item>
@@ -135,7 +135,7 @@ export default function Layout({ children, pageTitle = "" }) {
                       {({ open }) => (
                         <>
                           <div>
-                            <Menu.Button className="max-w-xs bg-sky-600 rounded-full px-3 py-2 hover:bg-sky-500 flex items-center text-sm text-white focus:outline-none">
+                            <Menu.Button className="max-w-xs bg-sky-700 rounded-full px-3 py-2 hover:bg-sky-600 flex items-center text-sm text-white focus:outline-none">
                               <img className="h-8 w-8 rounded-full" src={profileImage} alt="" />
                               <ChevronDownIcon className="ml-2 w-5 h-5" />
                             </Menu.Button>
@@ -216,7 +216,7 @@ export default function Layout({ children, pageTitle = "" }) {
                 </div>
                 <div className="-mr-2 flex md:hidden">
                   {/* Mobile menu button */}
-                  <Disclosure.Button className="bg-sky-600 inline-flex items-center justify-center p-2 rounded-md text-sky-200 hover:text-white hover:bg-sky-500 hover:bg-opacity-75 focus:outline-none">
+                  <Disclosure.Button className="inline-flex items-center justify-center p-2 rounded-md text-sky-200 hover:text-white hover:bg-sky-600 hover:bg-opacity-75 focus:outline-none">
                     <span className="sr-only">Open main menu</span>
                     {open ? (
                       <XIcon className="block h-6 w-6" aria-hidden="true" />
@@ -234,7 +234,7 @@ export default function Layout({ children, pageTitle = "" }) {
                   <a
                     key={itemIdx}
                     href={item.link}
-                    className="text-white hover:bg-sky-500 hover:bg-opacity-75 block px-3 py-2 rounded-md text-base font-medium"
+                    className="text-white hover:bg-sky-600 hover:bg-opacity-75 block px-3 py-2 rounded-md text-base font-medium"
                   >
                     {item.title}
                   </a>
@@ -249,26 +249,26 @@ export default function Layout({ children, pageTitle = "" }) {
                 <div className="mt-3 px-2 space-y-1">
                   <a
                     href="/my-help"
-                    className="block px-3 py-2 rounded-md text-base font-medium text-white hover:bg-sky-500 hover:bg-opacity-75"
+                    className="block px-3 py-2 rounded-md text-base font-medium text-white hover:bg-sky-600 hover:bg-opacity-75"
                   >
-                    MyHelp
+                    My Help
                   </a>
                   <a
                     href="/saved-help"
-                    className="block px-3 py-2 rounded-md text-base font-medium text-white hover:bg-sky-500 hover:bg-opacity-75"
+                    className="block px-3 py-2 rounded-md text-base font-medium text-white hover:bg-sky-600 hover:bg-opacity-75"
                   >
                     Saved Help
                   </a>
                   <a
                     href="/profile"
-                    className="block px-3 py-2 rounded-md text-base font-medium text-white hover:bg-sky-500 hover:bg-opacity-75"
+                    className="block px-3 py-2 rounded-md text-base font-medium text-white hover:bg-sky-600 hover:bg-opacity-75"
                   >
                     Profile
                   </a>
                   <a
                     href="#"
                     onClick={signOut}
-                    className="block px-3 py-2 rounded-md text-base font-medium text-white hover:bg-sky-500 hover:bg-opacity-75"
+                    className="block px-3 py-2 rounded-md text-base font-medium text-white hover:bg-sky-600 hover:bg-opacity-75"
                   >
                     Logout
                   </a>
@@ -280,7 +280,7 @@ export default function Layout({ children, pageTitle = "" }) {
       </Disclosure>
 
       <main>
-        <div className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
+        <div className="w-10/12 sm:max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
           {pageTitle != "" ? <h1 className="text-3xl font-bold mt-5 mb-10">{pageTitle}</h1> : null}
 
           {children}

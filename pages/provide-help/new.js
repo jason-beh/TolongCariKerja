@@ -106,7 +106,7 @@ export default function newProvideHelp() {
                   <div className="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start border-t sm:border-gray-200 sm:py-8">
                     <label
                       htmlFor="message"
-                      className="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"
+                      className="block text-sm font-medium text-gray-700 mt-2 sm:mt-px sm:pt-2"
                     >
                       Description of the job you are providing
                       <Record
@@ -158,7 +158,7 @@ export default function newProvideHelp() {
                   <div className="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start border-t sm:border-gray-200 sm:pt-8">
                     <label
                       htmlFor="skills"
-                      className="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"
+                      className="block text-sm font-medium text-gray-700 mt-2 sm:mt-px sm:pt-2"
                     >
                       Skills
                     </label>
@@ -189,7 +189,7 @@ export default function newProvideHelp() {
               <div className="flex justify-end">
                 <button
                   type="submit"
-                  className="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-sky-600 hover:bg-sky-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sky-500"
+                  className="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-sky-700 hover:bg-sky-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sky-500"
                 >
                   Submit
                 </button>

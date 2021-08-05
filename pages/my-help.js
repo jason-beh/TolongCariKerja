@@ -18,6 +18,7 @@ export default function Index() {
   const [helpData, setHelpData] = useState([]);
   const [savedHelp, setSavedHelp] = useState([]);
   const [isDisabled, setIsDisabled] = useState(false);
+  const [hasFetchedData, setHasFetchedData] = useState(false);
 
   useEffect(() => {
     if (!loading && !session) {
@@ -30,6 +31,7 @@ export default function Index() {
       });
 
       setHelpData(data);
+      setHasFetchedData(true);
     }
 
     if (!loading && session) {
@@ -49,30 +51,32 @@ export default function Index() {
           </button>
           <button onClick={signOut}>sign out</button> */}
           <Layout pageTitle="My Help">
-            {isDisabled === true || helpData.length == 0 ? (
+            {helpData.length == 0 && hasFetchedData === true ? (
               <RedirectPrompt message="You haven't created any help at the moment." />
-            ) : (              <>
-              <div className="flex items-center my-10">
-                <a
-                  href="/request-help/edit"
-                  className="mr-4 relative inline-flex items-center px-4 py-2 img border-transparent text-sm font-medium rounded-md text-white bg-gray-600 shadow-sm hover:bg-gray-700 focus:outline-none"
-                >
-                  Edit Request Help
-                </a>
-                <a
-                  href="/provide-help/edit"
-                  className="relative inline-flex items-center px-4 py-2 img border-transparent text-sm font-medium rounded-md text-white bg-gray-600 shadow-sm hover:bg-gray-700 focus:outline-none"
-                >
-                  Edit Provide Help
-                </a>
-              </div>
+            ) : (
+              <>
+                <div className="flex items-center my-10">
+                  <a
+                    href="/request-help/edit"
+                    className="mr-4 relative inline-flex items-center px-4 py-2 img border-transparent text-sm font-medium rounded-md text-white bg-gray-600 shadow-sm hover:bg-gray-700 focus:outline-none"
+                  >
+                    Edit Request Help
+                  </a>
+                  <a
+                    href="/provide-help/edit"
+                    className="relative inline-flex items-center px-4 py-2 img border-transparent text-sm font-medium rounded-md text-white bg-gray-600 shadow-sm hover:bg-gray-700 focus:outline-none"
+                  >
+                    Edit Provide Help
+                  </a>
+                </div>
 
-              <ul className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-                {helpData.map((help) => (
-                  <PostCard help={help} key={help._id} savedHelp={savedHelp} />
-                ))}
-              </ul>
-            </>)}
+                <ul className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+                  {helpData.map((help) => (
+                    <PostCard help={help} key={help._id} savedHelp={savedHelp} />
+                  ))}
+                </ul>
+              </>
+            )}
           </Layout>
         </>
       )}

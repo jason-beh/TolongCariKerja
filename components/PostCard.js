@@ -20,7 +20,7 @@ export default function PostCard({ help, savedHelp, refreshOnSave = null }) {
         className="flex-1 flex flex-col p-8 hover:opacity-80"
       >
         <img
-          className="w-32 h-32 flex-shrink-0 mx-auto bg-black rounded-full"
+          className="w-32 h-32 flex-shrink-0 mx-auto bg-white rounded-full"
           src={help.creator.image === "" ? "images/user-placeholder.jpeg" : help.creator.image}
           alt=""
         />
