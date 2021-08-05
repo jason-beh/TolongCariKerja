@@ -16,7 +16,7 @@ export default function Login() {
     return (
       <>
         {!session && (
-          <div className="min-h-screen bg-gray-100 flex">
+          <div className="min-h-screen bg-gray-50 flex">
             <div className="flex-1 flex flex-col justify-center relative py-12 px-4 sm:px-6 lg:flex-none lg:px-20 xl:px-24">
               <div className="mx-auto w-full justify-between max-w-sm lg:w-84">
                 <div className="flex flex-col items-between">
@@ -29,14 +29,14 @@ export default function Login() {
                     <img src="images/google-icon.svg" className="w-6 w-8 mr-3"></img>
                     Sign In With Google
                   </button>
-                  <button
+                  {/* <button
                     onClick={() => signIn("facebook")}
                     className="px-8 hover:opacity-80 text-white rounded-md py-4 shadow-lg flex items-center justify-start"
                     style={{ background: "#3b5998" }}
                   >
                     <img src="images/facebook-icon.svg" className="w-6 w-8 mr-3"></img>
                     Sign In With Facebook
-                  </button>
+                  </button> */}
                 </div>
                 <div className="absolute bottom-4 left-0 w-full flex justify-center">
                   <img className="w-18" src="images/logo.svg" alt="" />
