@@ -40,7 +40,6 @@ export default function Layout({ children, pageTitle = "" }) {
       if (image != null && image != "") {
         setProfileImage(image);
       }
-
     }
   }, [loading, session]);
 
@@ -53,7 +52,9 @@ export default function Layout({ children, pageTitle = "" }) {
               <div className="flex items-center justify-between h-16">
                 <div className="flex items-center">
                   <div className="flex-shrink-0">
-                    <img className="h-8" src="/images/logo-white.svg" />
+                    <a href="/">
+                      <img className="h-8" src="/images/logo-white.svg" />
+                    </a>
                   </div>
                   <div className="hidden md:block">
                     <div className="ml-10 flex items-baseline space-x-4">

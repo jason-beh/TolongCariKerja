@@ -6,7 +6,7 @@ export default function RedirectPrompt({ message }) {
         href="/"
         className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-sky-600 hover:bg-sky-700 focus:outline-none"
       >
-        Return to Home
+        Return Home
       </a>
     </div>
   );
