@@ -74,7 +74,7 @@ export default function Help() {
                   </p>
                 </div>
               </div>
-              
+
               <div
                 onClick={() => {
                   setIsSaved(!isSaved);
@@ -154,10 +154,8 @@ export default function Help() {
                       <MailIcon className="w-5 h-5 text-white" aria-hidden="true" />
                       <span className="ml-3">Email</span>
                     </a>
-                  </div>
 
-                  {help.creator.contact != null ? (
-                    <div className="-ml-px w-0 flex-1 flex">
+                    {help.creator.contact != null ? (
                       <a
                         href={`tel:+60${help.creator.contact}`}
                         className="ml-4 inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-gray-600 hover:bg-gray-700 focus:outline-none"
@@ -165,8 +163,8 @@ export default function Help() {
                         <PhoneIcon className="w-5 h-5 text-gray-400" aria-hidden="true" />
                         <span className="ml-3">Call</span>
                       </a>
-                    </div>
-                  ) : null}
+                    ) : null}
+                  </div>
                 </section>
               </div>
             </div>

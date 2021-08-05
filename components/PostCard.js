@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import { HeartIcon as HeartOutlineIcon } from "@heroicons/react/outline";
 import axios from "axios";
 
-export default function PostCard({ help, savedHelp }) {
+export default function PostCard({ help, savedHelp, refreshOnSave = null }) {
   const [isSaved, setIsSaved] = useState(savedHelp.includes(help._id));
 
   async function savePost(id, isSaved) {
@@ -79,11 +79,14 @@ export default function PostCard({ help, savedHelp }) {
 
           <div className="-ml-px w-0 flex-1 flex">
             <div
-              onClick={() => {
+              onClick={async () => {
                 setIsSaved(!isSaved);
-                savePost(help._id, !isSaved);
+                await savePost(help._id, !isSaved);
+                if (refreshOnSave != null) {
+                  await refreshOnSave();
+                }
               }}
-              className={`relative w-0 flex-1 inline-flex items-center justify-center py-4 text-sm font-medium border border-transparent rounded-br-lg ${
+              className={`relative w-0 flex-1 hover:opacity-80 inline-flex items-center justify-center py-4 text-sm font-medium border border-transparent rounded-br-lg ${
                 isSaved ? "text-red-500" : "text-gray-700"
               }`}
             >

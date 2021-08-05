@@ -1,12 +1,12 @@
-import { Menu, Transition } from "@headlessui/react";
-import { PlusIcon } from "@heroicons/react/solid";
-import axios from "axios";
-import { useSession } from "next-auth/client";
+import { signOut, useSession } from "next-auth/client";
 import { useRouter } from "next/router";
-import { Fragment, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
+import Link from "next/link";
+import axios from "axios";
+import { MailIcon, PhoneIcon, BookmarkIcon } from "@heroicons/react/solid";
+import truncateString from "../utils/truncateString";
 import Layout from "../components/Layout";
 import PostCard from "../components/PostCard";
-import classNames from "../utils/classNames";
 
 export default function Index() {
   const [session, loading] = useSession();
@@ -20,17 +20,16 @@ export default function Index() {
       router.push("/login");
     }
 
-    async function fetchData() {
-      let { data } = await axios({
-        method: "get",
-        url: `/api/help/`,
+    async function fetchData(session) {
+      let { data } = await axios.post("/api/my-help", {
+        creator: session.dbUser._id,
       });
 
       setHelpData(data);
     }
 
     if (!loading && session) {
-      fetchData();
+      fetchData(session);
       setSavedHelp(session.dbUser.savedHelp || []);
     }
   }, [loading, session]);
@@ -45,7 +44,7 @@ export default function Index() {
             <Link href="/hello">To the secret</Link>
           </button>
           <button onClick={signOut}>sign out</button> */}
-          <Layout pageTitle="Home">
+          <Layout pageTitle="My Help">
             <ul className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
               {helpData.map((help) => (
                 <PostCard help={help} key={help._id} savedHelp={savedHelp} />
