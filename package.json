@@ -8,8 +8,35 @@
     "start": "next start"
   },
   "dependencies": {
+    "@azure/storage-blob": "^12.7.0",
+    "@cloudinary/base": "^1.0.0-beta.4",
+    "@cloudinary/react": "^1.0.0-beta.8",
+    "@headlessui/react": "^1.4.0",
+    "@heroicons/react": "^1.0.3",
+    "@tailwindcss/forms": "^0.3.3",
+    "axios": "^0.21.1",
+    "cloudinary": "^1.26.3",
+    "dotenv": "^10.0.0",
+    "formik": "^2.2.9",
+    "microsoft-cognitiveservices-speech-sdk": "^1.18.0",
+    "moment": "^2.29.1",
+    "mongodb": "^4.0.1",
+    "mongoose": "^5.13.4",
     "next": "11.0.1",
+    "next-auth": "^3.27.3",
+    "next-connect": "^0.10.1",
     "react": "17.0.2",
-    "react-dom": "17.0.2"
+    "react-dom": "17.0.2",
+    "react-phone-number-input": "^3.1.25",
+    "react-select": "^4.3.1",
+    "swr": "^0.5.6",
+    "universal-cookie": "^4.0.4",
+    "uuid": "^8.3.2",
+    "yup": "^0.32.9"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.3.1",
+    "postcss": "^8.3.6",
+    "tailwindcss": "^2.2.7"
   }
 }
