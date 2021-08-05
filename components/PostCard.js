@@ -14,45 +14,47 @@ export default function PostCard({ help, savedHelp, refreshOnSave = null }) {
 
   return (
     <li className="col-span-1 flex flex-col cursor-pointer text-center bg-white rounded-lg shadow divide-y divide-gray-200">
-      <Link key={help._id} href={`help/${help._id}`}>
-        <div className="flex-1 flex flex-col p-8 hover:opacity-80">
-          <img
-            className="w-32 h-32 flex-shrink-0 mx-auto bg-black rounded-full"
-            src={help.creator.image === "" ? "images/user-placeholder.jpeg" : help.creator.image}
-            alt=""
-          />
-          <dl className="mt-1 flex flex-col justify-between">
-            <dd className="mt-3">
+      <a
+        key={help._id}
+        href={`help/${help._id}`}
+        className="flex-1 flex flex-col p-8 hover:opacity-80"
+      >
+        <img
+          className="w-32 h-32 flex-shrink-0 mx-auto bg-black rounded-full"
+          src={help.creator.image === "" ? "images/user-placeholder.jpeg" : help.creator.image}
+          alt=""
+        />
+        <dl className="mt-1 flex flex-col justify-between">
+          <dd className="mt-3">
+            <span
+              className={`px-2 py-1 text-xs font-medium rounded-full ${
+                help.isRequestHelp === true
+                  ? "text-green-800 bg-green-100"
+                  : "text-blue-800 bg-blue-100"
+              }`}
+            >
+              {help.isRequestHelp === true ? "Seeking a Job" : "Providing a Job"}
+            </span>
+          </dd>
+        </dl>
+
+        <h3 className="mt-4 text-gray-900 text-2xl font-bold">{help.creator.name}</h3>
+
+        <p className="mt-3 text-sm text-center">{truncateString(help.message, 100)}</p>
+
+        <dl className="mt-4 flex-grow flex flex-col justify-between">
+          <dd className="mt-3">
+            {help.skills.map((skill, index) => (
               <span
-                className={`px-2 py-1 text-xs font-medium rounded-full ${
-                  help.isRequestHelp === true
-                    ? "text-green-800 bg-green-100"
-                    : "text-blue-800 bg-blue-100"
-                }`}
+                key={index}
+                className={`px-2 py-1 text-xs font-medium rounded-full text-yellow-800 bg-yellow-200 mr-2`}
               >
-                {help.isRequestHelp === true ? "Seeking a Job" : "Providing a Job"}
+                {skill}
               </span>
-            </dd>
-          </dl>
-
-          <h3 className="mt-4 text-gray-900 text-2xl font-bold">{help.creator.name}</h3>
-
-          <p className="mt-3 text-sm text-center">{truncateString(help.message, 100)}</p>
-
-          <dl className="mt-4 flex-grow flex flex-col justify-between">
-            <dd className="mt-3">
-              {help.skills.map((skill, index) => (
-                <span
-                  key={index}
-                  className={`px-2 py-1 text-xs font-medium rounded-full text-yellow-800 bg-yellow-200`}
-                >
-                  {skill}
-                </span>
-              ))}
-            </dd>
-          </dl>
-        </div>
-      </Link>
+            ))}
+          </dd>
+        </dl>
+      </a>
       <div>
         <div className="-mt-px flex divide-x divide-gray-200">
           <div className="w-0 flex-1 flex">

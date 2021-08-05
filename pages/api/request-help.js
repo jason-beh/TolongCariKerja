@@ -46,7 +46,7 @@ export default async function handler(req, res) {
   } else if (req.method === "DELETE") {
     await Help.findOneAndDelete({ _id: session.dbUser.requestHelp }, req.body).lean();
 
-    await User.findOneAndUpdate({ _id: session.id }, { requestHelp: "" }).lean();
+    await User.findOneAndUpdate({ _id: session.id }, { requestHelp: null }).lean();
     
     return res.status(200).send("success");
   } else {

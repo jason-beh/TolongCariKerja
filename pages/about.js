@@ -26,7 +26,7 @@ export default function Example() {
               Frequently Asked Questions
               <p className="font-normal mt-6 text-lg text-gray-500">
                 Can’t find the answer you’re looking for? Reach out to our{" "}
-                <a href="/contact" className="font-medium text-indigo-600 hover:text-indigo-500">
+                <a href="/contact" className="font-medium text-sky-600 hover:text-sky-500">
                   customer support
                 </a>{" "}
                 team.

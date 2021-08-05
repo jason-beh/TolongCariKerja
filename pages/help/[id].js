@@ -13,6 +13,8 @@ export default function Help() {
   const [help, setHelp] = useState(null);
   const [savedHelp, setSavedHelp] = useState([]);
   const [isSaved, setIsSaved] = useState(false);
+  const [showDeleteButton, setShowDeleteButton] = useState(false);
+  const [isRequestHelp, setIsRequestHelp] = useState(false);
 
   async function savePost(id, isSaved) {
     let { data } = await axios.post(`/api/help/save`, { id, isSaved });
@@ -29,10 +31,25 @@ export default function Help() {
         method: "get",
         url: `/api/help/${id}`,
       });
-      console.log(data);
+
+      if (data == "") {
+        router.push("/");
+        return;
+      }
+
       setHelp(data);
 
-      let { savedHelp } = session.dbUser;
+      let { savedHelp, requestHelp, provideHelp } = session.dbUser;
+      if (
+        (data.isRequestHelp === true &&
+          requestHelp != null &&
+          data._id.toString() === requestHelp) ||
+        (data.isRequestHelp === false && provideHelp != null && data._id.toString() === provideHelp)
+      ) {
+        setIsRequestHelp(data.isRequestHelp);
+        setShowDeleteButton(true);
+      }
+
       setSavedHelp(savedHelp);
       setIsSaved(savedHelp.includes(data._id));
     }
@@ -112,7 +129,15 @@ export default function Help() {
                         <div className="sm:col-span-1">
                           <dt className="text-sm font-medium text-gray-500">Type</dt>
                           <dd className="mt-1 text-sm text-gray-900">
-                            {help.isRequestHelp === true ? "Requesting for Job" : "Providing a Job"}
+                            <span
+                              className={`px-2 py-1 text-xs font-medium rounded-full ${
+                                help.isRequestHelp === true
+                                  ? "text-green-800 bg-green-100"
+                                  : "text-blue-800 bg-blue-100"
+                              }`}
+                            >
+                              {help.isRequestHelp === true ? "Seeking a Job" : "Providing a Job"}
+                            </span>
                           </dd>
                         </div>
                         <div className="sm:col-span-1">
@@ -124,7 +149,7 @@ export default function Help() {
                           {help.skills.map((skill, index) => (
                             <span
                               key={index}
-                              className={`px-2 py-1 text-xs font-medium rounded-full text-yellow-800 bg-yellow-200`}
+                              className={`px-2 py-1 text-xs font-medium rounded-full text-yellow-800 bg-yellow-200 mr-2`}
                             >
                               {skill}
                             </span>
@@ -134,7 +159,7 @@ export default function Help() {
                         {help.creator.contact != null ? (
                           <div className="sm:col-span-1">
                             <dt className="text-sm font-medium text-gray-500">Phone</dt>
-                            <dd className="mt-1 text-sm text-gray-900">+1 555-555-5555</dd>
+                            <dd className="mt-1 text-sm text-gray-900">{help.creator.contact}</dd>
                           </div>
                         ) : null}
 
@@ -146,23 +171,60 @@ export default function Help() {
                     </div>
                   </div>
 
-                  <div className="flex justify-start items-center mt-5">
-                    <a
-                      href={`mailto:${help.creator.email}`}
-                      className="inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-gray-600 hover:bg-gray-700 focus:outline-none"
-                    >
-                      <MailIcon className="w-5 h-5 text-white" aria-hidden="true" />
-                      <span className="ml-3">Email</span>
-                    </a>
-
-                    {help.creator.contact != null ? (
+                  <div className="flex justify-between mt-5">
+                    <div className="flex justify-start items-center ">
                       <a
-                        href={`tel:+60${help.creator.contact}`}
-                        className="ml-4 inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-gray-600 hover:bg-gray-700 focus:outline-none"
+                        href={`mailto:${help.creator.email}`}
+                        className="inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-gray-600 hover:bg-gray-700 focus:outline-none"
                       >
-                        <PhoneIcon className="w-5 h-5 text-gray-400" aria-hidden="true" />
-                        <span className="ml-3">Call</span>
+                        <MailIcon className="w-5 h-5 text-white" aria-hidden="true" />
+                        <span className="ml-3">Email</span>
                       </a>
+
+                      {help.creator.contact != null ? (
+                        <a
+                          href={`tel:${help.creator.contact}`}
+                          className="ml-4 inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-gray-600 hover:bg-gray-700 focus:outline-none"
+                        >
+                          <PhoneIcon className="w-5 h-5 text-white" aria-hidden="true" />
+                          <span className="ml-3">Call</span>
+                        </a>
+                      ) : null}
+                    </div>
+
+                    {showDeleteButton === true ? (
+                      <div className="flex items-center justify-right">
+                        <a
+                          href={
+                            isRequestHelp === true ? "/request-help/edit" : "/provide-help/edit"
+                          }
+                          className="mr-4 inline-flex cursor-pointer items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-gray-600 hover:bg-gray-700 focus:outline-none"
+                        >
+                          Edit
+                        </a>
+
+                        <a
+                          onClick={async () => {
+                            let url = "";
+
+                            if (isRequestHelp === true) {
+                              url = "/api/request-help";
+                            } else {
+                              url = "/api/provide-help";
+                            }
+
+                            await axios({
+                              method: "delete",
+                              url,
+                            });
+
+                            router.push("/");
+                          }}
+                          className="inline-flex cursor-pointer items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-red-600 hover:bg-red-700 focus:outline-none"
+                        >
+                          Delete
+                        </a>
+                      </div>
                     ) : null}
                   </div>
                 </section>

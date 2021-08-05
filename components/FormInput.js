@@ -50,7 +50,7 @@ export default function FormInput({
               // saveFormData(fieldName, e.target.value);
             }}
             value={getNestedValueInObject(fieldName, formik.values)}
-            className={`max-w-lg shadow-sm block w-full focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm ${
+            className={`max-w-lg shadow-sm block w-full focus:ring-sky-500 focus:border-sky-500 sm:text-sm ${
               getNestedValueInObject(fieldName, formik.errors) &&
               getNestedValueInObject(fieldName, formik.touched)
                 ? "border-red-500"
@@ -67,7 +67,7 @@ export default function FormInput({
               // saveFormData(fieldName, e.target.value);
             }}
             value={getNestedValueInObject(fieldName, formik.values)}
-            className={`block max-w-lg w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm ${
+            className={`block max-w-lg w-full shadow-sm focus:ring-sky-500 focus:border-sky-500 sm:text-sm ${
               getNestedValueInObject(fieldName, formik.errors) &&
               getNestedValueInObject(fieldName, formik.touched)
                 ? "border-red-500"

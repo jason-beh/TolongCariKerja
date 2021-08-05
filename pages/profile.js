@@ -88,7 +88,7 @@ export default function Profile() {
       contact: Yup.string().required("This field is required."),
       skills: Yup.array().min(1, "Please add at least one skill."),
     }),
-    onSubmit: async (values) => {
+    onSubmit: async (values, {resetForm}) => {
       let { data } = await axios({
         method: "post",
         url: `/api/profile/update`,
@@ -102,6 +102,9 @@ export default function Profile() {
           setShowNotification(false);
         }, 4000);
       }
+
+      resetForm();
+
     },
   });
 

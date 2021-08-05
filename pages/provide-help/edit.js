@@ -7,6 +7,8 @@ import CreatableSelect from "react-select/creatable";
 import axios from "axios";
 import Record from "../../components/Record";
 import { ArrowLeftIcon } from "@heroicons/react/solid";
+import Layout from "../../components/Layout";
+import RedirectPrompt from "../../components/RedirectPrompt";
 
 export default function editProvideHelp() {
   const [session, loading] = useSession();
@@ -87,7 +89,7 @@ export default function editProvideHelp() {
     },
   });
 
-  const deleteProvide = async () => {
+  const deleteProvideHelp = async () => {
     await axios({
       method: "delete",
       url: `/api/provide-help`,
@@ -98,31 +100,17 @@ export default function editProvideHelp() {
 
   if (disablePage === true) {
     return (
-      <div className="flex flex-col h-screen items-center justify-center">
-        <p className="text-3xl font-medium mb-5">You haven't submitted a help provision.</p>
-        <a
-          href="/"
-          className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none"
-        >
-          Return to Home
-        </a>
-      </div>
+      <Layout pageTitle="Edit Help Provision">
+        <RedirectPrompt message="You haven't submitted a help provision." />
+      </Layout>
     );
   }
 
   return (
     <>
       {session && (
-        <main className="max-w-4xl mx-auto pt-24 pb-12 px-4 lg:pb-16">
-          <div
-            className="flex items-center justify-start mb-10 cursor-pointer"
-            onClick={() => window.history.back()}
-          >
-            <ArrowLeftIcon className="w-6 h-6 mr-2" />
-            <span className="text-lg">Back</span>
-          </div>
-
-          <form className="space-y-8 divide-y divide-gray-200" onSubmit={formik.handleSubmit}>
+        <Layout>
+          <form className="space-y-8 divide-y divide-gray-200 mt-10" onSubmit={formik.handleSubmit}>
             <div className="space-y-8 divide-y divide-gray-200 sm:space-y-5">
               <div>
                 <div>
@@ -175,7 +163,7 @@ export default function editProvideHelp() {
                         id="message"
                         name="message"
                         rows={8}
-                        className="max-w-lg shadow-sm block w-full focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm border border-gray-300 rounded-md"
+                        className="shadow-sm block w-full  sm:text-sm border border-gray-300 rounded-md"
                         onChange={formik.handleChange}
                         onBlur={formik.handleBlur}
                         value={formik.values.message}
@@ -221,7 +209,7 @@ export default function editProvideHelp() {
             <div className="pt-5">
               <div className="flex justify-end">
                 <button
-                  onClick={deleteProvide}
+                  onClick={deleteProvideHelp}
                   type="button"
                   className="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-red-600 hover:bg-red-700 focus:outline-none"
                 >
@@ -229,14 +217,14 @@ export default function editProvideHelp() {
                 </button>
                 <button
                   type="submit"
-                  className="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none"
+                  className="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-sky-600 hover:bg-sky-700 focus:outline-none"
                 >
                   Update
                 </button>
               </div>
             </div>
           </form>
-        </main>
+        </Layout>
       )}
     </>
   );
