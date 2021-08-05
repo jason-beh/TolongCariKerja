@@ -5,6 +5,7 @@ import { BellIcon, MenuIcon, PlusIcon, XIcon, ChevronDownIcon } from "@heroicons
 import { signOut, useSession } from "next-auth/client";
 import { useRouter } from "next/router";
 import classNames from "../utils/classNames";
+import Footer from './Footer';
 
 const navigation = [
   {
@@ -286,6 +287,8 @@ export default function Layout({ children, pageTitle = "" }) {
           {children}
         </div>
       </main>
+
+      <Footer />
     </div>
   );
 }
