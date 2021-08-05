@@ -54,7 +54,7 @@ export default function Profile() {
       let userData = session.dbUser;
 
       setProfileImage(userData.image || "/images/user-placeholder.jpeg");
-      console.log(session);
+      // console.log(session);
 
       let initialProfile = {};
 
@@ -64,7 +64,7 @@ export default function Profile() {
         }
       }
 
-      console.log(initialProfile);
+      // console.log(initialProfile);
 
       let skills = [];
       userData.skills.forEach((skill) => {

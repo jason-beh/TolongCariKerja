@@ -20,13 +20,13 @@ export default async function handler(req, res) {
         { _id: session.id },
         { $push: { savedHelp: savedPostId } }
       );
-      console.log(data);
+      // console.log(data);
     } else {
       let data = await User.findOneAndUpdate(
         { _id: session.id },
         { $pull: { savedHelp: savedPostId } }
       );
-      console.log(data);
+      // console.log(data);
     }
 
     return res.status(200).send("success");

@@ -16,7 +16,7 @@ export default async function handler(req, res) {
       .populate("creator")
       .lean();
 
-    console.log(helpData);
+    // console.log(helpData);
 
     return res.send(helpData);
   } else {

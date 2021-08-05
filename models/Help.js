@@ -7,10 +7,10 @@ const helpSchema = new Schema(
     skills: [String],
 
     isRequestHelp: Boolean,
-    isCompleted: Boolean,
+    // isCompleted: Boolean,
     creator: { type: Schema.Types.ObjectId, ref: "User" },
-    matched: { type: Schema.Types.ObjectId, ref: "User", default: null },
-    completeDate: { type: String, default: "" },
+    // matched: { type: Schema.Types.ObjectId, ref: "User", default: null },
+    // completeDate: { type: String, default: "" },
   },
   { timestamps: true }
 );

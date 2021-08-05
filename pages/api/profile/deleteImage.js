@@ -23,7 +23,7 @@ export default async function handler(req, res) {
     let secondLastIndex = previousImage.length - 2;
     previousImage[lastIndex] = previousImage[lastIndex].split(".")[0];
     let previousPublicId = previousImage[secondLastIndex] + "/" + previousImage[lastIndex];
-    console.log(previousPublicId);
+    // console.log(previousPublicId);
 
     // Delete from Cloudinary
     await cloudinary.uploader.destroy(previousPublicId, function (result) {

@@ -41,7 +41,7 @@ export default function Index() {
     }
 
     if (!loading && session) {
-      console.log(session);
+      // console.log(session);
       fetchData(session);
       setSavedHelp(session.dbUser.savedHelp || []);
     }

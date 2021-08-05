@@ -8,7 +8,7 @@ const userSchema = new Schema(
 
     contact: { type: Number, default: null },
     skills: { type: [String], default: [] },
-    completedJobs: { type: [String], default: [] },
+    // completedJobs: { type: [String], default: [] },
     location: { type: String, default: "" },
     requestHelp: { type: Schema.Types.ObjectId, ref: "Help", default: null },
     provideHelp: { type: Schema.Types.ObjectId, ref: "Help", default: null },

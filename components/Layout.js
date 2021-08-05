@@ -5,7 +5,8 @@ import { BellIcon, MenuIcon, PlusIcon, XIcon, ChevronDownIcon } from "@heroicons
 import { signOut, useSession } from "next-auth/client";
 import { useRouter } from "next/router";
 import classNames from "../utils/classNames";
-import Footer from './Footer';
+import Footer from "./Footer";
+import Head from "next/head";
 
 const navigation = [
   {
@@ -46,6 +47,12 @@ export default function Layout({ children, pageTitle = "" }) {
 
   return (
     <div>
+      {pageTitle != "" ? (
+        <Head>
+          <title>{pageTitle} | TolongCariKerja</title>
+        </Head>
+      ) : null}
+
       <Disclosure as="nav" className="bg-sky-700">
         {({ open }) => (
           <>
