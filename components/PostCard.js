@@ -95,8 +95,6 @@ export default function PostCard({ help, savedHelp, refreshOnSave = null }) {
               ) : (
                 <HeartOutlineIcon className="w-5 h-5" aria-hidden="true" />
               )}
-
-              <span className="ml-3">{isSaved ? "Unsave" : "Save"}</span>
             </div>
           </div>
         </div>

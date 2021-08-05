@@ -1,12 +1,10 @@
-import { signOut, useSession } from "next-auth/client";
+import axios from "axios";
+import { useSession } from "next-auth/client";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import Link from "next/link";
-import axios from "axios";
-import { MailIcon, PhoneIcon, BookmarkIcon } from "@heroicons/react/solid";
-import truncateString from "../utils/truncateString";
 import Layout from "../components/Layout";
 import PostCard from "../components/PostCard";
+import RedirectPrompt from "../components/RedirectPrompt";
 
 export default function Index() {
   const [session, loading] = useSession();
@@ -53,7 +51,7 @@ export default function Index() {
     let updatedHelpData = helpData.filter((help) => {
       return help._id != id;
     });
-    
+
     setHelpData(updatedHelpData);
   };
 
@@ -68,9 +66,9 @@ export default function Index() {
           </button>
           <button onClick={signOut}>sign out</button> */}
 
-          <Layout pageTitle="Home">
+          <Layout pageTitle="Saved Help">
             {isDisabled === true || helpData.length == 0 ? (
-              <h1>No saved help are found.</h1>
+              <RedirectPrompt message="There are no saved help to be found." />
             ) : (
               <ul className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
                 {helpData.map((help) => (

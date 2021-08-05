@@ -1,7 +1,7 @@
 /* This example requires Tailwind CSS v2.0+ */
 import { Fragment, useEffect, useState } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
-import { BellIcon, MenuIcon, PlusIcon, XIcon } from "@heroicons/react/outline";
+import { BellIcon, MenuIcon, PlusIcon, XIcon, ChevronDownIcon } from "@heroicons/react/outline";
 import { signOut, useSession } from "next-auth/client";
 import { useRouter } from "next/router";
 import classNames from "../utils/classNames";
@@ -36,11 +36,11 @@ export default function Layout({ children, pageTitle = "" }) {
     }
 
     if (!loading && session) {
-      let { image } = session.dbUser;
+      let { image, name } = session.dbUser;
       if (image != null && image != "") {
-        console.log(image);
         setProfileImage(image);
       }
+
     }
   }, [loading, session]);
 
@@ -134,8 +134,9 @@ export default function Layout({ children, pageTitle = "" }) {
                       {({ open }) => (
                         <>
                           <div>
-                            <Menu.Button className="max-w-xs bg-sky-600 rounded-full flex items-center text-sm text-white focus:outline-none">
+                            <Menu.Button className="max-w-xs bg-sky-600 rounded-full px-3 py-2 hover:bg-sky-500 flex items-center text-sm text-white focus:outline-none">
                               <img className="h-8 w-8 rounded-full" src={profileImage} alt="" />
+                              <ChevronDownIcon className="ml-2 w-5 h-5" />
                             </Menu.Button>
                           </div>
                           <Transition
