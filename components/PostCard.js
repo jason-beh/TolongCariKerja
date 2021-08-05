@@ -44,11 +44,11 @@ export default function PostCard({ help, savedHelp, refreshOnSave = null }) {
         <p className="mt-3 text-sm text-center">{truncateString(help.message, 100)}</p>
 
         <dl className="mt-4 flex flex-col justify-between">
-          <dd className="mt-3">
+          <dd className="mt-3 flex items-center justify-center flex-wrap">
             {help.skills.map((skill, index) => (
               <span
                 key={index}
-                className={`px-2 py-1 text-xs font-medium rounded-full text-yellow-800 bg-yellow-200 mr-2`}
+                className={`px-2 py-1 mt-2 text-xs font-medium rounded-full text-yellow-800 bg-yellow-200 mr-2`}
               >
                 {skill}
               </span>

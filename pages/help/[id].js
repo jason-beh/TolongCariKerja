@@ -6,6 +6,7 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import Layout from "../../components/Layout";
 import { HeartIcon as HeartOutlineIcon } from "@heroicons/react/outline";
+import Head from "next/head";
 
 export default function Help() {
   const [session, loading] = useSession();
@@ -63,6 +64,9 @@ export default function Help() {
     <>
       {session && !loading && help != null && (
         <Layout>
+          <Head>
+            <title>Help Details | TolongCariKerja</title>
+          </Head>
           <main className="py-10">
             {/* Page header */}
             <div className="max-w-3xl mx-auto px-4 sm:px-6 md:flex md:items-center md:justify-between md:space-x-5 lg:max-w-7xl lg:px-8">

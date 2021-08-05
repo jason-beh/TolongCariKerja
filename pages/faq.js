@@ -1,6 +1,7 @@
 /* This example requires Tailwind CSS v2.0+ */
 import { Disclosure } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/outline";
+import Head from "next/head";
 import Layout from "../components/Layout";
 
 const faqs = [
@@ -37,6 +38,9 @@ function classNames(...classes) {
 export default function Example() {
   return (
     <Layout>
+      <Head>
+        <title>FAQ | TolongCariKerja</title>
+      </Head>
       <div className="bg-white shadow-sm">
         <div className="max-w-7xl mx-auto py-12 px-4 sm:py-16 sm:px-6 lg:px-8">
           <div className="max-w-3xl mx-auto divide-y-2 divide-gray-200">

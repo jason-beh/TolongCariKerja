@@ -9,6 +9,7 @@ import Record from "../../components/Record";
 import { ArrowLeftIcon } from "@heroicons/react/solid";
 import RedirectPrompt from "../../components/RedirectPrompt";
 import Layout from "../../components/Layout";
+import Head from "next/head";
 
 export default function newRequestHelp() {
   const [session, loading] = useSession();
@@ -90,6 +91,9 @@ export default function newRequestHelp() {
     <>
       {session && (
         <Layout>
+          <Head>
+            <title>Request New Help | TolongCariKerja</title>
+          </Head>
           <form className="space-y-8 divide-y divide-gray-200 mt-10" onSubmit={formik.handleSubmit}>
             <div className="space-y-8 divide-y divide-gray-200 sm:space-y-5">
               <div>

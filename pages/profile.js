@@ -102,7 +102,6 @@ export default function Profile() {
           setShowNotification(false);
         }, 4000);
       }
-
     },
   });
 
@@ -175,10 +174,13 @@ export default function Profile() {
                   </div>
                   <header className="relative py-10">
                     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                      <div className="flex items-center justify-start mb-5 cursor-pointer hover:opacity-90" onClick={() => window.history.back()}>
+                      <a
+                        className="flex items-center justify-start mb-5 cursor-pointer hover:opacity-90"
+                        href="/"
+                      >
                         <ArrowLeftIcon className="mr-3 w-8 h-6 text-white" />
-                        <p className="text-xl font-medium text-white">Back</p>
-                      </div>
+                        <p className="text-xl font-medium text-white">Return to Home</p>
+                      </a>
 
                       <h1 className="text-3xl font-bold text-white">Profile</h1>
                     </div>

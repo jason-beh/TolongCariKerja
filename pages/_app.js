@@ -21,7 +21,7 @@ export default function App({ Component, pageProps }) {
 
         <meta name="title" content={name} />
         <meta name="description" content={description} />
-        <link rel="icon" type="image/png" href="images/favicon.png" />
+        <link rel="icon" type="image/png" href="/images/favicon.png" />
         <meta name="theme-color" content="#1F2937" />
 
         <meta property="og:type" content="website" />

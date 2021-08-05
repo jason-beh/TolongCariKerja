@@ -11,7 +11,7 @@ export default async function handler(req, res) {
   if (req.method === "GET") {
     // Update profile with new image
     let helpData = await Help.find({
-      isCompleted: false,
+      // isCompleted: false,
     })
       .populate("creator")
       .lean();

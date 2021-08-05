@@ -12,7 +12,7 @@ export default async function handler(req, res) {
     let data = {
       ...req.body,
       isRequestHelp: true,
-      isCompleted: false,
+      // isCompleted: false,
       creator: session.id,
       
       completeDate: "",
