@@ -1,14 +1,9 @@
-import { signOut, useSession } from "next-auth/client";
-import { useRouter } from "next/router";
-import { Disclosure, Menu, Transition } from "@headlessui/react";
-import { Fragment, useEffect, useState } from "react";
-import Link from "next/link";
 import axios from "axios";
-import { MailIcon, PhoneIcon, BookmarkIcon, PlusIcon } from "@heroicons/react/solid";
-import truncateString from "../utils/truncateString";
+import { useSession } from "next-auth/client";
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
 import Layout from "../components/Layout";
 import PostCard from "../components/PostCard";
-import classNames from "../utils/classNames";
 import RedirectPrompt from "../components/RedirectPrompt";
 
 export default function Index() {

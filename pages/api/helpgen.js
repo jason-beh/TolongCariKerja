@@ -1,8 +1,5 @@
-import { getSession } from "next-auth/client";
 import Help from "../../models/Help";
 import dbConnect from "../../utils/mongodb";
-import { v4 as uuidv4 } from "uuid";
-import Help from "../../models/Help";
 
 export default async function handler(req, res) {
   // const session = await getSession({ req });

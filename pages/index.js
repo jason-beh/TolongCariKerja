@@ -1,12 +1,9 @@
-import { Menu, Transition } from "@headlessui/react";
-import { PlusIcon } from "@heroicons/react/solid";
 import axios from "axios";
 import { useSession } from "next-auth/client";
 import { useRouter } from "next/router";
-import { Fragment, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Layout from "../components/Layout";
 import PostCard from "../components/PostCard";
-import classNames from "../utils/classNames";
 
 export default function Index() {
   const [session, loading] = useSession();

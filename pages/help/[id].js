@@ -1,12 +1,12 @@
-import { MailIcon, PhoneIcon, HeartIcon } from "@heroicons/react/solid";
+import { HeartIcon as HeartOutlineIcon } from "@heroicons/react/outline";
+import { HeartIcon, MailIcon, PhoneIcon } from "@heroicons/react/solid";
 import axios from "axios";
 import moment from "moment";
 import { useSession } from "next-auth/client";
+import Head from "next/head";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import Layout from "../../components/Layout";
-import { HeartIcon as HeartOutlineIcon } from "@heroicons/react/outline";
-import Head from "next/head";
 
 export default function Help() {
   const [session, loading] = useSession();

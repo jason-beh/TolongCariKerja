@@ -1,16 +1,14 @@
-import { Disclosure, Menu, Transition } from "@headlessui/react";
-import { BellIcon, MenuIcon, UserCircleIcon, XIcon } from "@heroicons/react/outline";
-import { ArrowLeftIcon, SearchIcon } from "@heroicons/react/solid";
+import { Disclosure } from "@headlessui/react";
+import { UserCircleIcon } from "@heroicons/react/outline";
+import { ArrowLeftIcon } from "@heroicons/react/solid";
 import axios from "axios";
 import { useFormik } from "formik";
 import { useSession } from "next-auth/client";
 import { useRouter } from "next/router";
-import React, { Fragment, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import "react-phone-number-input/style.css";
 import CreatableSelect from "react-select/creatable";
 import * as Yup from "yup";
-import PhoneInput from "react-phone-number-input";
-import "react-phone-number-input/style.css";
 import Notification from "../components/Notification";
 
 const user = {

@@ -1,5 +1,4 @@
 import { getSession } from "next-auth/client";
-import Help from "../../../models/Help";
 import User from "../../../models/User";
 
 export default async function handler(req, res) {
