@@ -13,8 +13,8 @@ const navigation = [
     title: "Home",
   },
   {
-    link: "/about",
-    title: "About Us",
+    link: "/faq",
+    title: "FAQ Us",
   },
   {
     link: "/request-help/new",
@@ -66,10 +66,10 @@ export default function Layout({ children, pageTitle = "" }) {
                         Home
                       </a>
                       <a
-                        href="/about"
+                        href="/faq"
                         className="text-white hover:bg-sky-600 hover:bg-opacity-75 px-3 py-2 rounded-md text-sm font-medium"
                       >
-                        About
+                        FAQ
                       </a>
                     </div>
                   </div>

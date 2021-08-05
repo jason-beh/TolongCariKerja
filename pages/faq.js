@@ -5,11 +5,29 @@ import Layout from "../components/Layout";
 
 const faqs = [
   {
+    question: "What does TolongCariKerja mean?",
+    answer:
+      "TolongCariKerja is a phrase in Bahasa Malaysia, which is Malaysia's national language. In English, it literally translates to 'Help Find Job'. TolongCariKerja is therefore a name to help people in Malaysia to find jobs, especially people's jobs who are affected by COVID-19.",
+  },
+  {
     question: "Why was TolongCariKerja created?",
     answer:
-      "TolongCariKerja is created to support #KitaJagaKita movement.",
+      "TolongCariKerja was originally created to support #KitaJagaKita movement. We noticed the overwhelming need to help people across Malaysia. As most #KitaJagaKita apps have emerged to ensure basic necessities such as food are provided, TolongCariKerja is an initiative to help support the movement further by providing everyone a platform to look for jobs based on their needs and skills.",
   },
-  // More questions...
+  {
+    question: "What is the key feature of TolongCari Kerja",
+    answer:
+      "TolongCariKerja offers an easy-to-use platform for everyone. Our value proposition is utilizing Azure's AI services, namely Speech-To-Text and Translator services, to ease natural language barriers and allow them to speak directly when they are requesting for help.",
+  },
+  {
+    question: "Is TolongCariKerja still in development?",
+    answer:
+      "With our diligent and rigorous development timeline, we hope to add other features such as language support and search functions to help users. Furthermore, we want to add Azure's Personaliser service to recommend jobs to users based on their previous liked jobs. In the future, we might want to add additional form validation and matching feature also.",
+  },
+  {
+    question: "Who is the creator of TolongCariKerja?",
+    answer: "TolongCariKerja is created by Jason Beh.",
+  },
 ];
 
 function classNames(...classes) {
@@ -25,8 +43,11 @@ export default function Example() {
             <h2 className="text-center text-3xl font-extrabold text-gray-900 sm:text-4xl">
               Frequently Asked Questions
               <p className="font-normal mt-6 text-lg text-gray-500">
-                Can’t find the answer you’re looking for? Reach out to our{" "}
-                <a href="/contact" className="font-medium text-sky-600 hover:text-sky-500">
+                Can’t find the answer you’re looking for? Email our{" "}
+                <a
+                  href="mailto:behjieshen@gmail.com"
+                  className="font-medium text-sky-600 hover:text-sky-500"
+                >
                   customer support
                 </a>{" "}
                 team.

@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { HeartIcon as HeartOutlineIcon } from "@heroicons/react/outline";
 import axios from "axios";
+import moment from "moment";
 
 export default function PostCard({ help, savedHelp, refreshOnSave = null }) {
   const [isSaved, setIsSaved] = useState(savedHelp.includes(help._id));
@@ -42,7 +43,7 @@ export default function PostCard({ help, savedHelp, refreshOnSave = null }) {
 
         <p className="mt-3 text-sm text-center">{truncateString(help.message, 100)}</p>
 
-        <dl className="mt-4 flex-grow flex flex-col justify-between">
+        <dl className="mt-4 flex flex-col justify-between">
           <dd className="mt-3">
             {help.skills.map((skill, index) => (
               <span
@@ -53,7 +54,10 @@ export default function PostCard({ help, savedHelp, refreshOnSave = null }) {
               </span>
             ))}
           </dd>
+          
         </dl>
+
+        <p className="mt-5 text-sm text-gray-600">Created on {moment(help.createdAt).format("DD MMMM YYYY")}</p>
       </a>
       <div>
         <div className="-mt-px flex divide-x divide-gray-200">
