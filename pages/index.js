@@ -11,6 +11,7 @@ export default function Index() {
 
   const [helpData, setHelpData] = useState([]);
   const [savedHelp, setSavedHelp] = useState([]);
+  const [hasFetchedData, setHasFetchedData] = useState(false);
 
   useEffect(() => {
     if (!loading && !session) {
@@ -24,6 +25,8 @@ export default function Index() {
       });
 
       setHelpData(data);
+
+      setHasFetchedData(true);
     }
 
     if (!loading && session) {
@@ -36,13 +39,13 @@ export default function Index() {
     <>
       {session && !loading && (
         <>
-          {/* Signed in as {session.user.email}
-          <div>You can now access our super secret pages</div>
-          <button className="block">
-            <Link href="/hello">To the secret</Link>
-          </button>
-          <button onClick={signOut}>sign out</button> */}
           <Layout pageTitle="Home">
+            {hasFetchedData === false ? (
+              <div className={`flex justify-center h-2/3 w-full items-center`}>
+                <img className="w-10 h-10 animate-spin" src="/images/loading.svg" />
+              </div>
+            ) : null}
+
             <ul className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
               {helpData.map((help) => (
                 <PostCard help={help} key={help._id} savedHelp={savedHelp} />
